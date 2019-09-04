@@ -48,4 +48,4 @@ Once the Azure SQL Instance is created and the connection strings within the .ne
 * grpcio - the main gRPC library
 
 # Feedback
-Any questions or feedback can be directed to emiller@rightpoint.com or miller.edwardg@gmail.com with the Subject 'gRPC Example: <YOUR TOPIC>'
+Any questions or feedback can be directed to emiller@rightpoint.com or miller.edwardg@gmail.com with the Subject 'gRPC Example: YOUR TOPIC'
