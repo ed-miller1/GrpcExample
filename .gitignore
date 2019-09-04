@@ -11,7 +11,7 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-
+*.sln
 appsettings.development.json
 
 # Build results
