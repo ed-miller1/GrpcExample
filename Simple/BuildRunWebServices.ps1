@@ -2,9 +2,6 @@
 #will assume user has .net core 3 and VS 2019 latest preview
 #script will live in GrpcTests root folder and should be executed from there
 
-dotnet restore ./PersonWebAPITest/
-dotnet build ./PersonWebAPITest/PersonWebAPITest.csproj
-
 dotnet restore ./TestGrpcService/
 dotnet build ./TestGrpcService/TestGrpcService.csproj
 
