@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+option csharp_namespace = "InventoryServices";
+
+package Inventory;
+
+service InventoryServices {
+	rpc GetInventoryItemById (InventoryIdRequest) returns (InventoryItem);
+	rpc GetInventoryItemByName (InventoryNameRequest) returns (InventoryItem);
+	rpc GetInventoryItemsByCategoryId (InventoryCategoryIdRequest) returns (InventoryByCategoryReply);
+	rpc GetInventoryItemsByCategoryName (InventoryCategoryNameRequest) returns (InventoryByCategoryReply);
+	rpc GetInventoryCategories (GetInventoryCategoriesRequest) returns (InventoryCategoriesReply);
+
+	rpc CreateInventoryItem (NewInventoryItem) returns (InventoryItem);
+	rpc UpdateInventoryItem (InventoryItem) returns (InventoryItem);
+	rpc DeleteInventoryItem (InventoryItem) returns (InventoryDeleteReply);
+
+	rpc CreateInventoryCategory (NewInventoryCategory) returns (InventoryCategory);
+	rpc UpdateInventoryCategory (InventoryCategory) returns (InventoryCategory);
+	rpc DeleteInventoryCategory (InventoryCategory) returns (InventoryDeleteReply);
+}
+
+message InventoryIdRequest {
+	int32 itemId = 1;
+}
+
+message InventoryNameRequest {
+	string itemName = 1;
+}
+
+message InventoryCategoryIdRequest {
+	int32 categoryId = 1;
+}
+
+message InventoryCategoryNameRequest {
+	string categoryName = 1;
+}
+
+message NewInventoryItem {
+	string inventoryItemName = 1;
+	repeated InventoryCategory inventoryCategories = 2;
+}
+
+message InventoryItem {
+	int32 inventoryItemId = 1;
+	string inventoryItemName = 2;
+	repeated InventoryCategory inventoryCategories = 3;
+}
+
+message InventoryCategory {
+	int32 inventoryCategoryId = 1;
+	string inventoryCategoryName = 2;
+}
+
+message NewInventoryCategory {
+	int32 inventoryCategoryId = 1;
+	string inventoryCategoryName = 2;
+}
+
+message InventoryCategoriesReply {
+	repeated InventoryCategory inventoryCategories = 1;
+}
+
+message InventoryByCategoryReply {
+	repeated InventoryItem inventoryItems = 1;
+}
+
+message InventoryDeleteReply {
+	InventoryStatus status = 1;
+}
+
+enum InventoryStatus {
+	SUCCESS = 0;
+	FAILURE = 1;
+}
+
+message GetInventoryCategoriesRequest {}
