@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Protobuf Include="..\..\protos\rating.proto" GrpcServices="Server" />
+    <Protobuf Include="..\..\protos\messages.proto"/>
   </ItemGroup>
 
   <ItemGroup>

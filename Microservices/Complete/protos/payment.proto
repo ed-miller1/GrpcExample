@@ -4,6 +4,9 @@ option csharp_namespace = "PaymentServices";
 
 package PaymentServices;
 
-service PaymentServices {
+import "messages.proto";
 
+service PaymentServices {
+	rpc SubmitPaymentForItem(ItemPaymentRequest) returns (ItemPaymentResult);
+	rpc GetPaymentHistoryForUser(UserPaymentHistoryRequest) returns (UserPaymentHistory);
 }

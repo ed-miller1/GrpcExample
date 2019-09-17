@@ -4,6 +4,9 @@ option csharp_namespace = "RatingServices";
 
 package RatingServices;
 
-service RatingServices {
+import "messages.proto";
 
+service RatingServices {
+	rpc PostReview(.PostReview) returns (PostReviewResult);
+	rpc PostComment(.PostComment) returns (PostCommentResult);
 }

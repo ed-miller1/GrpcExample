@@ -1,0 +1,151 @@
+syntax = "proto3";
+
+message InventoryIdRequest {
+	int32 itemId = 1;
+}
+
+message InventoryNameRequest {
+	string itemName = 1;
+}
+
+message InventoryCategoryIdRequest {
+	int32 categoryId = 1;
+}
+
+message InventoryCategoryNameRequest {
+	string categoryName = 1;
+}
+
+message NewInventoryItem {
+	string inventoryItemName = 1;
+	repeated InventoryCategory inventoryCategories = 2;
+}
+
+message InventoryItem {
+	int32 inventoryItemId = 1;
+	string inventoryItemName = 2;
+	repeated InventoryCategory inventoryCategories = 3;
+}
+
+message InventoryCategory {
+	int32 inventoryCategoryId = 1;
+	string inventoryCategoryName = 2;
+}
+
+message NewInventoryCategory {
+	int32 inventoryCategoryId = 1;
+	string inventoryCategoryName = 2;
+}
+
+message InventoryCategoriesReply {
+	repeated InventoryCategory inventoryCategories = 1;
+}
+
+message InventoryByCategoryReply {
+	repeated InventoryItem inventoryItems = 1;
+}
+
+message InventoryDeleteReply {
+	Status status = 1;
+}
+
+enum Status {
+	SUCCESS = 0;
+	FAILURE = 1;
+}
+
+message GetInventoryCategoriesRequest {}
+
+message ItemPaymentRequest {
+	int32 userId = 1;
+	repeated PaymentItem items = 2;
+	string payDateTime = 3;
+	PurchaserInformation purchaser = 4;
+}
+
+message PurchaserInformation {
+	string PurchaserName = 1;
+	string BankNumber = 2;
+}
+
+message PaymentItem {
+	int32 inventoryId = 1;
+	int32 itemCount = 2;
+}
+
+message ItemPaymentResult {
+	Status status = 1;
+	string resultMessage = 2;
+}
+
+message UserPaymentHistoryRequest {
+	int32 userId = 1;
+}
+
+message UserPaymentHistory {
+	repeated PurchaseHistoryItem historyItems = 1;
+}
+
+message PurchaseHistoryItem {
+	int32 purchaseId = 1;
+	int32 userId = 2;
+	int64 amount = 3;
+	PurchaserInformation purchaser = 4;
+	repeated PaymentItem items = 5;
+	string purchaseDate = 6;
+}
+
+enum StarRating {
+	OneStar = 0;
+	TwoStars = 1;
+	ThreeStars = 2;
+	FourStars = 3;
+	FiveStars = 4;
+}
+
+message PostReviewResult {
+	Status status = 1;
+	string message = 2;
+}
+
+message PostReview {
+	ReviewBase baseReviewInformation = 1;
+}
+
+message ReviewBase {
+	StarRating rating = 1;
+	int32 userId = 2;
+	int32 inventoryItemId = 3;
+	string reviewContent = 4;
+	string reviewDate = 5;
+}
+
+message GetReview {
+	int32 reviewId = 1;
+	ReviewBase reviewBase = 2;
+}
+
+message PostComment {
+	CommentBase commentInformation = 1;
+}
+
+message CommentBase {
+	int32 reviewId = 1;
+	int32 userId = 2;
+	string conent = 3;
+	string commentDate = 4;
+}
+
+message Comment {
+	int32 commentId = 1;
+	CommentBase commentBase = 2;
+}
+
+message GetComments {
+	repeated Comment comments = 1;
+}
+
+message PostCommentResult {
+	Status status = 1;
+	string message = 2;
+}
