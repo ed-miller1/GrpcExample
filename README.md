@@ -11,11 +11,11 @@ This project consists of the following programs:
 3.  pyclient - a gRPC client implemented in python 3. This client also tallies benchmark data.
 
 # Prerequisites
-1.  The latest preview version of Visual Studio 2019 (NOTE: Once .net core 3 is out of preview, the latest version of VS 2019 will suffice)
+1.  The latest version of Visual Studio (2019 or greater).
 2.  An azure sql instance, this is required for some functionality in the API and gRPC service to work properly.
 
-VS 2019 Preview:
-https://visualstudio.microsoft.com/vs/preview/
+Visual Studio:
+https://visualstudio.microsoft.com/vs/
 
 # Azure setup
 As mentioned prior, an Azure SQL instance is required as well as updating appsettings with the instance db connection.
